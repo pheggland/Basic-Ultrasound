@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Ultrasound - What is Ultrasound</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .welcome-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+            margin-bottom: 30px;
+        }
+        
+        .welcome-section h2 {
+            color: #2c3e50;
+            font-size: 22px;
+            margin: 0 0 15px 0;
+            font-weight: 500;
+        }
+        
+        .welcome-section p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+        
+        .learning-objectives {
+            margin-bottom: 30px;
+        }
+        
+        .learning-objectives h2 {
+            color: #2c3e50;
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .objectives-list {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px 20px 20px 45px;
+            margin: 0;
+            list-style-position: outside;
+        }
+        
+        .objectives-list li {
+            padding: 10px 0;
+            font-size: 15px;
+            line-height: 1.5;
+            color: #495057;
+        }
+        
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            background: #000;
+        }
+        
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .date-tag {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 30px;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #e9ecef;
+            margin: 40px 0;
+        }
+        
+        .quiz-section {
+            margin-top: 40px;
+        }
+        
+        .quiz-header {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .quiz-header h2 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 300;
+        }
+        
+        .cta-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+        }
+        
+        .cta-box h3 {
+            margin: 0 0 15px 0;
+            font-size: 22px;
+            color: white;
+        }
+        
+        .cta-box p {
+            margin: 0 0 20px 0;
+            font-size: 16px;
+            line-height: 1.6;
+            color: white;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+        }
+        
+        .btn-warning {
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+            color: white;
+        }
+        
+        .cta-meta {
+            margin: 15px 0 0 0;
+            font-size: 13px;
+            color: rgba(255,255,255,0.9);
+            font-style: italic;
+        }
+        
+        .info-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #27ae60;
+            margin-bottom: 30px;
+        }
+        
+        .info-box h3 {
+            color: #2c3e50;
+            font-size: 18px;
+            margin: 0 0 10px 0;
+        }
+        
+        .info-box p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #495057;
+        }
+        
+        .question-preview {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        
+        .question-header {
+            margin-bottom: 15px;
+        }
+        
+        .question-number {
+            background: #3498db;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        
+        .points {
+            background: #f39c12;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .question-text {
+            font-size: 17px;
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .question-preview ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 15px 0;
+        }
+        
+        .question-preview li {
+            padding: 10px 15px;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            background: #fafafa;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        
+        .topic-badge {
+            padding: 12px;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 5px;
+            font-size: 14px;
+            border-left: 3px solid #28a745;
+        }
+        
+        .tips-box {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #ffc107;
+            margin-bottom: 30px;
+        }
+        
+        .tips-box h3 {
+            color: #856404;
+            font-size: 16px;
+            margin: 0 0 10px 0;
+        }
+        
+        .tips-box ul {
+            margin: 0;
+            padding-left: 20px;
+            color: #856404;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .tips-box li {
+            margin-bottom: 5px;
+        }
+        
+        .pdf-section {
+            margin-top: 40px;
+        }
+        
+        .pdf-header {
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .pdf-header h2 {
+            margin: 0;
+            font-size: 24px;
+            color: white;
+        }
+        
+        .pdf-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #e67e22;
+            margin-bottom: 25px;
+        }
+        
+        .pdf-info h3 {
+            color: #2c3e50;
+            font-size: 18px;
+            margin: 0 0 10px 0;
+        }
+        
+        .pdf-info p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #495057;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .tip-text {
+            font-size: 14px;
+            color: #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+        }
+        
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+            text-align: center;
+        }
+        
+        .footer p {
+            font-size: 13px;
+            color: #6c757d;
+            margin: 0;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Basic Ultrasound - What is Ultrasound</h1>
+        </div>
+        
+        <div class="content">
+            <div class="welcome-section">
+                <h2>Welcome to the Basic Ultrasound Course</h2>
+                <p>In lecture 1, you will be introduced to basic ultrasound and ultrasound imaging.</p>
+            </div>
+
+            <div class="learning-objectives">
+                <h2>Learning objectives in this lecture:</h2>
+                <ol class="objectives-list">
+                    <li>Define what ultrasound is</li>
+                    <li>List ways ultrasound is used today</li>
+                    <li>Discuss the advantages of ultrasound imaging</li>
+                    <li>Describe how ultrasound images are created</li>
+                </ol>
+            </div>
+
+            <div class="video-wrapper">
+                <iframe 
+                    src="https://uis.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=fefaf567-073d-4e33-b6c6-aef60097cd27&autoplay=false&offerviewer=true&showtitle=true&showbrand=false&start=0&interactivity=all"
+                    width="100%"
+                    height="100%"
+                    name="Ultrasound Basics Lecture 1"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="date-tag">July 30</div>
+
+            <hr>
+
+            <div class="quiz-section">
+                <div class="quiz-header">
+                    <h2>✓ Test Your Knowledge</h2>
+                </div>
+                
+                <div class="cta-box">
+                    <h3>Ready to take the quiz?</h3>
+                    <p>
+                        Complete the interactive quiz to test your understanding of ultrasound basics. The quiz covers all learning objectives from this lecture.
+                    </p>
+                    <a href="[LEGG INN QUIZ-LENKE HER]" target="_blank" class="btn btn-primary">
+                        📝 Start Quiz
+                    </a>
+                    <p class="cta-meta">
+                        2 questions • 5 minutes • Automatic grading
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <h3>📋 Quiz Preview</h3>
+                    <p>
+                        The quiz contains 2 multiple-choice questions based on the lecture content. Here's what you'll be asked:
+                    </p>
+                </div>
+
+                <div class="question-preview">
+                    <div class="question-header">
+                        <span class="question-number">Question 1</span>
+                        <span class="points">1 point</span>
+                    </div>
+                    <div class="question-text">
+                        Which is an advantage of ultrasound imaging?
+                    </div>
+                    <ul>
+                        <li>A. It is non-invasive</li>
+                        <li>B. It is portable and can be used at the bedside</li>
+                        <li>C. It shows real-time images</li>
+                        <li>D. All answers are advantages of ultrasound imaging</li>
+                    </ul>
+                    <div class="topic-badge">
+                        <strong>💡 Topic:</strong> Advantages of ultrasound imaging
+                    </div>
+                </div>
+
+                <div class="question-preview">
+                    <div class="question-header">
+                        <span class="question-number">Question 2</span>
+                        <span class="points">1 point</span>
+                    </div>
+                    <div class="question-text">
+                        Ultrasound waves are produced by which element inside the transducer?
+                    </div>
+                    <ul>
+                        <li>A. Water crystals</li>
+                        <li>B. Piezoelectric crystals</li>
+                        <li>C. Air molecules</li>
+                        <li>D. Wave crystals</li>
+                    </ul>
+                    <div class="topic-badge">
+                        <strong>💡 Topic:</strong> Ultrasound transducer components
+                    </div>
+                </div>
+
+                <div class="tips-box">
+                    <h3>💡 Study Tips</h3>
+                    <ul>
+                        <li>Watch the entire lecture video before taking the quiz</li>
+                        <li>Review the lecture notes (PDF) for detailed explanations</li>
+                        <li>Make sure you understand all learning objectives listed above</li>
+                        <li>You can take notes while watching the video</li>
+                    </ul>
+                </div>
+
+                <div class="text-center">
+                    <a href="[LEGG INN QUIZ-LENKE HER]" target="_blank" class="btn btn-success">
+                        Take the Quiz Now →
+                    </a>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="pdf-section">
+                <div class="pdf-header">
+                    <h2>📄 Lecture Notes</h2>
+                </div>
+                
+                <div class="pdf-info">
+                    <h3>Basic Ultrasound - Lecture 1</h3>
+                    <p><strong>Lecturer:</strong> Kristy E. Stohlmann, University Lecturer in Ultrasound</p>
+                    <p><strong>SUSTAIN:</strong> Stavanger UltraSound Training And Innovation Network</p>
+                    <p><strong>Date:</strong> 09.08.2021</p>
+                </div>
+
+                <div class="text-center">
+                    <a href="https://drive.google.com/file/d/1TVOc4MYcAxwxcMfQF0x1BEjUd6FNOhBI/view?usp=sharing" target="_blank" class="btn btn-warning">
+                        📑 Open Lecture Notes (PDF)
+                    </a>
+                </div>
+                
+                <p class="tip-text text-center">
+                    💡 Tip: Use the lecture notes together with the video for the best learning outcome!
+                </p>
+            </div>
+
+            <div class="footer">
+                <p>
+                    <strong>SUSTAIN</strong> - Stavanger UltraSound Training And Innovation Network
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
