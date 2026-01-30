@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Ultrasound - Transducers and Equipment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .nav-bar {
+            background: #2c3e50;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-bar a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+
+        .nav-bar a:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .welcome-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #9b59b6;
+            margin-bottom: 30px;
+        }
+
+        .welcome-section h2 {
+            color: #2c3e50;
+            font-size: 22px;
+            margin: 0 0 15px 0;
+            font-weight: 500;
+        }
+
+        .welcome-section p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+
+        .learning-objectives {
+            margin-bottom: 30px;
+        }
+
+        .learning-objectives h2 {
+            color: #2c3e50;
+            font-size: 20px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .objectives-list {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px 20px 20px 45px;
+            margin: 0;
+            list-style-position: outside;
+        }
+
+        .objectives-list li {
+            padding: 10px 0;
+            font-size: 15px;
+            line-height: 1.5;
+            color: #495057;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            background: #000;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .placeholder-box {
+            background: #f8f9fa;
+            border: 2px dashed #dee2e6;
+            border-radius: 10px;
+            padding: 60px 30px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .placeholder-box h3 {
+            color: #6c757d;
+            font-size: 18px;
+            margin: 0 0 10px 0;
+        }
+
+        .placeholder-box p {
+            color: #adb5bd;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #e9ecef;
+            margin: 40px 0;
+        }
+
+        .quiz-section {
+            margin-top: 40px;
+        }
+
+        .quiz-header {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .quiz-header h2 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 300;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .cta-box h3 {
+            margin: 0 0 15px 0;
+            font-size: 22px;
+            color: white;
+        }
+
+        .cta-box p {
+            margin: 0 0 20px 0;
+            font-size: 16px;
+            line-height: 1.6;
+            color: white;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-warning {
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+            color: white;
+        }
+
+        .pdf-section {
+            margin-top: 40px;
+        }
+
+        .pdf-header {
+            background: linear-gradient(135deg, #e67e22, #f39c12);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .pdf-header h2 {
+            margin: 0;
+            font-size: 24px;
+            color: white;
+        }
+
+        .pdf-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #e67e22;
+            margin-bottom: 25px;
+        }
+
+        .pdf-info h3 {
+            color: #2c3e50;
+            font-size: 18px;
+            margin: 0 0 10px 0;
+        }
+
+        .pdf-info p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #495057;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #e9ecef;
+            text-align: center;
+        }
+
+        .footer p {
+            font-size: 13px;
+            color: #6c757d;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .btn {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+
+            .nav-bar {
+                flex-direction: column;
+                gap: 10px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-bar">
+            <a href="index.html">← Back to Course Overview</a>
+            <div class="nav-links">
+                <a href="lecture-2.html">← Previous: Ultrasound Physics</a>
+                <a href="lecture-4.html">Next: Image Optimization →</a>
+            </div>
+        </div>
+        <div class="header">
+            <h1>Module 3: Transducers and Equipment</h1>
+        </div>
+
+        <div class="content">
+            <div class="welcome-section">
+                <h2>Understanding Ultrasound Transducers</h2>
+                <p>In this module, you will learn about the different types of ultrasound transducers, their clinical applications, and how to properly operate ultrasound equipment.</p>
+            </div>
+
+            <div class="learning-objectives">
+                <h2>Learning objectives in this lecture:</h2>
+                <ol class="objectives-list">
+                    <li>Identify different types of ultrasound transducers (linear, curvilinear, phased array)</li>
+                    <li>Explain the appropriate clinical applications for each transducer type</li>
+                    <li>Describe the basic components of an ultrasound machine</li>
+                    <li>Demonstrate proper transducer handling and care</li>
+                </ol>
+            </div>
+
+            <div class="placeholder-box">
+                <h3>Video Lecture Coming Soon</h3>
+                <p>The video lecture for this module will be added here</p>
+            </div>
+
+            <hr>
+
+            <div class="quiz-section">
+                <div class="quiz-header">
+                    <h2>Test Your Knowledge</h2>
+                </div>
+
+                <div class="cta-box">
+                    <h3>Ready to take the quiz?</h3>
+                    <p>Complete the interactive quiz to test your understanding of transducers and equipment.</p>
+                    <a href="[LEGG INN QUIZ-LENKE HER]" target="_blank" class="btn btn-primary">
+                        Start Quiz
+                    </a>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="pdf-section">
+                <div class="pdf-header">
+                    <h2>Lecture Notes</h2>
+                </div>
+
+                <div class="pdf-info">
+                    <h3>Transducers and Equipment - Lecture 3</h3>
+                    <p><strong>Lecturer:</strong> Kristy E. Stohlmann, University Lecturer in Ultrasound</p>
+                    <p><strong>SUSTAIN:</strong> Stavanger UltraSound Training And Innovation Network</p>
+                </div>
+
+                <div class="text-center">
+                    <a href="[LEGG INN PDF-LENKE HER]" target="_blank" class="btn btn-warning">
+                        Open Lecture Notes (PDF)
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer">
+                <p>
+                    <strong>SUSTAIN</strong> - Stavanger UltraSound Training And Innovation Network
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
