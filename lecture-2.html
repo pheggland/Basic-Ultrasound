@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic Ultrasound - Ultrasound Physics</title>
+    <title>Module 2: Key Terminology - SUSTAIN</title>
     <style>
         * {
             margin: 0;
@@ -61,10 +61,16 @@
         }
 
         .header h1 {
-            margin: 0;
+            margin: 0 0 10px 0;
             font-size: 28px;
             font-weight: 300;
             letter-spacing: 1px;
+        }
+
+        .header p {
+            margin: 0;
+            font-size: 14px;
+            opacity: 0.9;
         }
 
         .content {
@@ -72,25 +78,29 @@
         }
 
         .welcome-section {
-            background: #f8f9fa;
+            background: #e3f2fd;
             padding: 25px;
             border-radius: 10px;
-            border-left: 4px solid #27ae60;
+            border-left: 4px solid #1976d2;
             margin-bottom: 30px;
         }
 
         .welcome-section h2 {
-            color: #2c3e50;
+            color: #1565c0;
             font-size: 22px;
             margin: 0 0 15px 0;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .welcome-section p {
-            margin: 0;
-            font-size: 16px;
+            margin: 0 0 12px 0;
+            font-size: 15px;
             line-height: 1.6;
-            color: #2c3e50;
+            color: #424242;
+        }
+
+        .welcome-section p:last-child {
+            margin-bottom: 0;
         }
 
         .learning-objectives {
@@ -101,23 +111,51 @@
             color: #2c3e50;
             font-size: 20px;
             margin-bottom: 15px;
-            font-weight: 500;
+            font-weight: 600;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #27ae60;
         }
 
         .objectives-list {
             background: white;
-            border: 1px solid #e9ecef;
+            border: 1px solid #dee2e6;
             border-radius: 8px;
-            padding: 20px 20px 20px 45px;
+            padding: 0;
             margin: 0;
-            list-style-position: outside;
+            list-style: none;
+            counter-reset: item;
         }
 
         .objectives-list li {
-            padding: 10px 0;
+            padding: 15px 20px 15px 50px;
+            border-bottom: 1px solid #e9ecef;
             font-size: 15px;
             line-height: 1.5;
             color: #495057;
+            position: relative;
+            counter-increment: item;
+        }
+
+        .objectives-list li:last-child {
+            border-bottom: none;
+        }
+
+        .objectives-list li:before {
+            content: counter(item);
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #27ae60;
+            color: white;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 600;
         }
 
         .video-wrapper {
@@ -140,25 +178,15 @@
             border: none;
         }
 
-        .placeholder-box {
-            background: #f8f9fa;
-            border: 2px dashed #dee2e6;
-            border-radius: 10px;
-            padding: 60px 30px;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .placeholder-box h3 {
-            color: #6c757d;
-            font-size: 18px;
-            margin: 0 0 10px 0;
-        }
-
-        .placeholder-box p {
-            color: #adb5bd;
+        .date-tag {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
             font-size: 14px;
-            margin: 0;
+            font-weight: 500;
+            margin-bottom: 30px;
         }
 
         hr {
@@ -186,26 +214,149 @@
             font-weight: 300;
         }
 
-        .cta-box {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            padding: 30px;
+        .score-box {
+            background: #e8f5e9;
+            padding: 20px;
             border-radius: 10px;
+            border-left: 4px solid #27ae60;
+            margin-bottom: 25px;
             text-align: center;
-            margin-bottom: 30px;
-            color: white;
         }
 
-        .cta-box h3 {
-            margin: 0 0 15px 0;
-            font-size: 22px;
-            color: white;
+        .score-box p {
+            font-size: 20px;
+            font-weight: 600;
+            color: #2e7d32;
+            margin: 0;
         }
 
-        .cta-box p {
-            margin: 0 0 20px 0;
-            font-size: 16px;
-            line-height: 1.6;
+        .question-preview {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .question-preview.correct {
+            border-color: #27ae60;
+            background: #f1f8f4;
+        }
+
+        .question-preview.wrong {
+            border-color: #e74c3c;
+            background: #fef5f5;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .question-number {
+            background: #3498db;
             color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .points {
+            background: #f39c12;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .question-text {
+            font-size: 17px;
+            font-weight: 500;
+            color: #2c3e50;
+            margin-bottom: 18px;
+            line-height: 1.5;
+        }
+
+        .option {
+            display: block;
+            margin-bottom: 12px;
+            padding: 14px 18px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: #3498db;
+            background: #f8f9fa;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .option.correct {
+            border-color: #27ae60;
+            background: #e8f5e9;
+            color: #155724;
+            font-weight: 500;
+        }
+
+        .option.wrong {
+            border-color: #e74c3c;
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .option.correct:after {
+            content: "Correct";
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #27ae60;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .option.wrong:after {
+            content: "Incorrect";
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #e74c3c;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: 500;
+            display: none;
+            font-size: 14px;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .feedback.wrong {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
         }
 
         .btn {
@@ -216,6 +367,8 @@
             font-weight: bold;
             text-decoration: none;
             transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
         }
 
         .btn:hover {
@@ -223,14 +376,43 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        .btn-primary {
-            background: white;
-            color: #667eea;
+        .btn-success {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            width: 100%;
+        }
+
+        .btn-success:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
 
         .btn-warning {
             background: linear-gradient(135deg, #e67e22, #f39c12);
             color: white;
+        }
+
+        .final-result {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 25px;
+            display: none;
+        }
+
+        .final-result h3 {
+            margin: 0 0 12px 0;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .final-result p {
+            margin: 0;
+            font-size: 18px;
         }
 
         .pdf-section {
@@ -253,7 +435,7 @@
         }
 
         .pdf-info {
-            background: #f8f9fa;
+            background: #fff3e0;
             padding: 20px;
             border-radius: 10px;
             border-left: 4px solid #e67e22;
@@ -261,7 +443,7 @@
         }
 
         .pdf-info h3 {
-            color: #2c3e50;
+            color: #e65100;
             font-size: 18px;
             margin: 0 0 10px 0;
         }
@@ -274,6 +456,13 @@
 
         .text-center {
             text-align: center;
+        }
+
+        .tip-text {
+            font-size: 14px;
+            color: #6c757d;
+            font-style: italic;
+            margin: 15px 0;
         }
 
         .footer {
@@ -312,6 +501,12 @@
                 gap: 10px;
                 padding: 15px;
             }
+
+            .question-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
         }
     </style>
 </head>
@@ -325,29 +520,37 @@
             </div>
         </div>
         <div class="header">
-            <h1>Module 2: Ultrasound Physics</h1>
+            <h1>Module 2: Key Terminology in Ultrasound</h1>
+            <p>SUSTAIN: Stavanger UltraSound Training And Innovation Network</p>
         </div>
 
         <div class="content">
             <div class="welcome-section">
-                <h2>Understanding the Physics of Ultrasound</h2>
-                <p>In this module, you will learn about the fundamental physics principles that make ultrasound imaging possible, including sound waves, frequency, wavelength, and propagation.</p>
+                <h2>Echogenicity and Terminology</h2>
+                <p>In Module 2, we will continue with fundamental concepts of ultrasound imaging, focusing on echogenicity.</p>
+                <p>Here you will learn about key terminology and how to identify structures on ultrasound.</p>
             </div>
 
             <div class="learning-objectives">
-                <h2>Learning objectives in this lecture:</h2>
+                <h2>Learning Objectives for this Module:</h2>
                 <ol class="objectives-list">
-                    <li>Explain the properties of sound waves (frequency, wavelength, amplitude)</li>
-                    <li>Describe how ultrasound waves propagate through different tissues</li>
-                    <li>Understand the relationship between frequency and image resolution</li>
-                    <li>Explain acoustic impedance and its role in image formation</li>
+                    <li>Describe key terminology used in ultrasound imaging</li>
+                    <li>Identify structures on ultrasound using key terminology</li>
+                    <li>Identify blood flow on ultrasound imaging</li>
+                    <li>List some pathologies detected on ultrasound imaging</li>
                 </ol>
             </div>
 
-            <div class="placeholder-box">
-                <h3>Video Lecture Coming Soon</h3>
-                <p>The video lecture for this module will be added here</p>
+            <div class="video-wrapper">
+                <iframe
+                    src="https://uis.cloud.panopto.eu/Panopto/Pages/Embed.aspx?id=cedd9a9f-feaa-4f96-a95b-aefa01148d9f&autoplay=false&offerviewer=true&showtitle=true&showbrand=false&start=0&interactivity=all"
+                    title="Ultrasound Basics - Lecture 2"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; autoplay"
+                    allowfullscreen>
+                </iframe>
             </div>
+
+            <div class="date-tag">July 30</div>
 
             <hr>
 
@@ -356,12 +559,71 @@
                     <h2>Test Your Knowledge</h2>
                 </div>
 
-                <div class="cta-box">
-                    <h3>Ready to take the quiz?</h3>
-                    <p>Complete the interactive quiz to test your understanding of ultrasound physics.</p>
-                    <a href="[LEGG INN QUIZ-LENKE HER]" target="_blank" class="btn btn-primary">
-                        Start Quiz
-                    </a>
+                <div class="score-box">
+                    <p>Score: <span id="score">0</span> / 2</p>
+                </div>
+
+                <form id="quiz-form">
+                    <div class="question-preview" id="q1">
+                        <div class="question-header">
+                            <span class="question-number">Question 1</span>
+                            <span class="points">1 point</span>
+                        </div>
+                        <div class="question-text">
+                            Echogenicity is the ability of a structure or tissue to ___________________ the sound wave.
+                        </div>
+                        <label class="option">
+                            <input type="radio" name="q1" value="reflect">
+                            Reflect
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="absorb">
+                            Absorb
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="impede">
+                            Impede
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="resist">
+                            Resist
+                        </label>
+                        <div class="feedback" id="fb1"></div>
+                    </div>
+
+                    <div class="question-preview" id="q2">
+                        <div class="question-header">
+                            <span class="question-number">Question 2</span>
+                            <span class="points">1 point</span>
+                        </div>
+                        <div class="question-text">
+                            ____________________ means that the structure is more echogenic than the surrounding structures.
+                        </div>
+                        <label class="option">
+                            <input type="radio" name="q2" value="hyperechoic">
+                            Hyperechoic
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="hypoechoic">
+                            Hypoechoic
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="isoechoic">
+                            Isoechoic
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="anechoic">
+                            Anechoic
+                        </label>
+                        <div class="feedback" id="fb2"></div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success" id="submit-btn">Submit Answers</button>
+                </form>
+
+                <div class="final-result" id="final-result">
+                    <h3>Quiz Completed!</h3>
+                    <p>You scored <span id="final-score"></span> out of 2 points</p>
                 </div>
             </div>
 
@@ -373,16 +635,21 @@
                 </div>
 
                 <div class="pdf-info">
-                    <h3>Ultrasound Physics - Lecture 2</h3>
+                    <h3>Ultrasound Basics - Lecture 2</h3>
                     <p><strong>Lecturer:</strong> Kristy E. Stohlmann, University Lecturer in Ultrasound</p>
                     <p><strong>SUSTAIN:</strong> Stavanger UltraSound Training And Innovation Network</p>
+                    <p><strong>Topic:</strong> Echogenicity and Terminology</p>
                 </div>
 
                 <div class="text-center">
-                    <a href="[LEGG INN PDF-LENKE HER]" target="_blank" class="btn btn-warning">
+                    <a href="https://drive.google.com/file/d/1OQqPXUimFPgxv9CKB8YVgH2QM7Qg5ZT8/view?usp=drive_link" target="_blank" class="btn btn-warning">
                         Open Lecture Notes (PDF)
                     </a>
                 </div>
+
+                <p class="tip-text text-center">
+                    Tip: Use the lecture notes together with the video for the best learning outcome!
+                </p>
             </div>
 
             <div class="footer">
@@ -392,5 +659,77 @@
             </div>
         </div>
     </div>
+
+    <script>
+    (function() {
+        const answers = {'q1': 'reflect', 'q2': 'hyperechoic'};
+        const feedback = {
+            'q1': {
+                correct: 'Correct! Echogenicity is the tissue\'s ability to reflect sound waves back to the transducer.',
+                wrong: 'Incorrect. The correct answer is "Reflect" - echogenicity describes how structures reflect ultrasound waves.'
+            },
+            'q2': {
+                correct: 'Correct! Hyperechoic means the structure reflects more sound than surrounding tissue.',
+                wrong: 'Incorrect. The correct answer is "Hyperechoic" - this means more echogenic than surrounding structures.'
+            }
+        };
+
+        let score = 0;
+        let submitted = false;
+
+        document.getElementById('quiz-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (submitted) return;
+
+            const formData = new FormData(this);
+            score = 0;
+
+            for (let i = 1; i <= 2; i++) {
+                const qName = 'q' + i;
+                const answer = formData.get(qName);
+                const qBlock = document.getElementById('q' + i);
+                const fb = document.getElementById('fb' + i);
+
+                if (answer === answers[qName]) {
+                    score++;
+                    qBlock.classList.add('correct');
+                    fb.textContent = feedback[qName].correct;
+                    fb.className = 'feedback correct';
+                    markOption(qName, answer, true);
+                } else if (answer) {
+                    qBlock.classList.add('wrong');
+                    fb.textContent = feedback[qName].wrong;
+                    fb.className = 'feedback wrong';
+                    markOption(qName, answer, false);
+                    markOption(qName, answers[qName], true);
+                }
+
+                fb.style.display = 'block';
+            }
+
+            document.getElementById('score').textContent = score;
+            document.getElementById('final-score').textContent = score;
+            document.getElementById('final-result').style.display = 'block';
+            document.getElementById('submit-btn').disabled = true;
+            document.getElementById('submit-btn').textContent = 'Quiz Completed';
+
+            submitted = true;
+        });
+
+        function markOption(qName, value, isCorrect) {
+            const options = document.querySelectorAll('input[name="' + qName + '"]');
+            options.forEach(function(option) {
+                if (option.value === value) {
+                    const label = option.closest('.option');
+                    if (isCorrect) {
+                        label.classList.add('correct');
+                    } else {
+                        label.classList.add('wrong');
+                    }
+                }
+            });
+        }
+    })();
+    </script>
 </body>
 </html>
